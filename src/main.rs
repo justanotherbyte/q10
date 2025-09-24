@@ -1,11 +1,11 @@
 #![allow(dead_code)]
 
-mod lexer;
+mod tokenizer;
 mod parser;
 mod scope;
 mod types;
 
-use lexer::{parse_line, token::Token};
+use tokenizer::{parse_line, token::Token};
 
 fn main() {
     let program = include_str!("../program.q");

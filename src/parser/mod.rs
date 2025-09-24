@@ -1,4 +1,4 @@
-use crate::lexer::token::Token;
+use crate::tokenizer::token::Token;
 
 pub enum ASTNode {
     Assignment {
