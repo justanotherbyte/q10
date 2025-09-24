@@ -1,0 +1,20 @@
+#[derive(PartialEq, Debug)]
+pub enum Token {
+    Ident(String),
+    Number(f32),
+    Eq,
+    Space,
+    EoL,
+    Add,
+    Subtract,
+    Multiply,
+    Divide,
+    Func,
+    Class,
+    LeftParen,
+    RightParen,
+    LeftCurlyParen,
+    RightCurlyParen,
+    Dot,
+    Literal(String),
+}
