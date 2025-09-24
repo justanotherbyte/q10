@@ -38,7 +38,14 @@ fn parse_space(input: &str) -> IResult<&str, Token> {
 }
 
 fn parse_operators(input: &str) -> IResult<&str, Token> {
-    let parsers = (char('+'), char('-'), char('*'), char('/'), char('.'));
+    let parsers = (
+        char('+'),
+        char('-'),
+        char('*'),
+        char('/'),
+        char('.'),
+        char(','),
+    );
     let (remaining, parsed) = alt(parsers).parse(input)?;
 
     let token = match parsed {
@@ -47,6 +54,7 @@ fn parse_operators(input: &str) -> IResult<&str, Token> {
         '*' => Token::Multiply,
         '/' => Token::Divide,
         '.' => Token::Dot,
+        ',' => Token::Comma,
         _ => unreachable!(),
     };
 

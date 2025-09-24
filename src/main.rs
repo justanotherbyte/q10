@@ -1,10 +1,12 @@
 #![allow(dead_code)]
 
-mod tokenizer;
+mod error;
 mod parser;
 mod scope;
+mod tokenizer;
 mod types;
 
+use parser::Parser;
 use tokenizer::{parse_line, token::Token};
 
 fn main() {
@@ -20,7 +22,10 @@ fn main() {
         tokens.extend(line_tokens);
     }
 
-    tokens.retain(|token| token != &Token::Space);
-
+    tokens.retain(|token| *token != Token::Space);
     println!("{tokens:?}");
+
+    let parser = Parser::new(tokens);
+    let ast = parser.parse();
+    ast.execute();
 }
